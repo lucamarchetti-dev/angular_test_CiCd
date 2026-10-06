@@ -42,10 +42,10 @@ Build the production image and start the container from the project directory:
 
 ```bash
 docker build -t lez03-angular .
-docker run --rm -p 8080:80 lez03-angular
+docker run --rm -p 3000:3000 lez03-angular
 ```
 
-Open http://localhost:8080 to use the application. The image builds the Angular
+Open http://localhost:3000 to use the application. The image builds the Angular
 application with Node.js and serves the static files with Nginx.
 
 ## Running unit tests
