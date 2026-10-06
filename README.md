@@ -36,6 +36,18 @@ ng build
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
+## Running with Docker
+
+Build the production image and start the container from the project directory:
+
+```bash
+docker build -t lez03-angular .
+docker run --rm -p 8080:80 lez03-angular
+```
+
+Open http://localhost:8080 to use the application. The image builds the Angular
+application with Node.js and serves the static files with Nginx.
+
 ## Running unit tests
 
 To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
