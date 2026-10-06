@@ -1,16 +1,16 @@
-FROM node:24-alpine AS build
+FROM node:22-alpine
 
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci
+RUN npm ci --omit=dev
 
-COPY . .
-RUN npm run build -- --configuration production
+COPY --chown=node:node . .
 
-FROM nginx:alpine
+ENV PORT=4000
+EXPOSE 4000
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /app/dist/lez03_angular/browser /usr/share/nginx/html
+USER node
 
-EXPOSE 3000
+CMD ["node", "app.js"]
+ 
